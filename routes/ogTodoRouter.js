@@ -27,7 +27,7 @@ router.get(`/get-todo-by-id/:id`, (req, res)=>{
         }
     }
     if(!todoTask){
-        res.end("The Todo ID you are looking for does not exist, please check the ID")
+        res.end({message: "The Todo ID you are looking for does not exist, please check the ID"})
     }else{
         res.json(todoTask)
     }

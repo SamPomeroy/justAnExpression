@@ -1,52 +1,16 @@
-# Just an Expression
+# Express Todo
 
-## Instructions
+**ONLY** Add the following to your `.gitignore` file: `node_modules\*\*\*`
 
-1. **Project Setup**
-   - Create a new directory called `justAnExpression`.
-   - Navigate to the `justAnExpression` folder.
-   - Create an `app.js` file using the `touch` command.
-   - Initialize a Node.js project with default settings using `npm init -y`.
-   - Open the project folder.
-   - Install Express, Morgan, uuid dependencies using `npm i`.
-   - In `app.js`, create an Express server and configure it to use Morgan as a logger. Don't forget to enable `.json()` support.
+## Create an Express Simple CR App
 
-2. **Router Setup**
-   - Create a `router` folder within your project directory.
-   - Inside the `router` folder, create two router files: `index.js` and `todo.js`.
-   - Connect the routers to your main `app.js` file. The `index` router should handle the root route `/`, and the `todo` router should handle `/api/todo`.
-
-3. **Index Router**
-   - In `index.js` router:
-     a. Create a router object and export it using `module.exports`.
-     b. Define a GET route for the root route `/` that returns a JSON response with the message 'Welcome to my App'.
-
-4. **Todo Router**
-   - In `todo.js` router:
-     a. Create a router object and export it using `module.exports`.
-     b. Install and require the `uuidv4` package.
-     c. Add the following dummy data to your `todo.js` router. Do not change anything in this array and do not add anything to it:
-        ```javascript
-        let todos = [
-          {
-            id: "haf24jd",
-            todo: "do laundry",
-            done: "false"
-          },
-          {
-            id: "jp2nkl2",
-            todo: "wash dishes",
-            done: "true"
-          }
-        ]
-        ```
-
-5. **GET Routes in Todo Router**
-   - Create a GET route for `/get-all-todos` that responds with the array of dummy data.
-   - Create a GET route for `/get-todo-by-id/:id` that takes a parameter and responds with the corresponding `id`, `todo`, and `done`. If the ID is not found, respond with the message "The Todo ID you are looking for does not exist, please check the ID".
-   - Create a GET route for `/get-todos-by-done/:done` that takes a parameter which can be either `true` or `false`. If the parameter is `false`, respond with a `newDoneArray` that has `done === false`. If the parameter is `true`, respond with a `newDoneArray` that has `done === true`.
-
-6. **POST Route in Todo Router**
-   - Create a POST route for `/create-new-todo` that posts a new todo with an automatically generated ID and a `done` value that is always `false`. Respond with the updated `todos` array.
-
-Follow these instructions carefully to create your Express CRUD application.
+1. Make the following updates to your backend:
+    - Make a validation check in your '/create-new-todo' route that makes sure a todo is unique, if a todo is a repeat respond with a message, "Todo already exists."
+    - Make a PUT "/update-todo" route that updates a todo by id and responds with the updated todo object
+    - Make a PUT "/mark-done" route that updates the `done` property of a todo and responds with wether that todo was marked complete or incomplete.
+    - Make a DELETE "/delete-todo" route that deletes a todo by id (the id here would probably be best to be hidden in the body). A response will read that the item was deleted.
+    - After you finish with your backend, write comments in your code, explaining all of the lines as if you are teaching someone fresh off of learing JavaScript how to build a backend server. 
+    
+## Stretch Goal
+    - Update the todo array and routes to accomodate for a new key call 'priority'. This will be a number between 1-5 that suggests the priority of the todo (1 being most important).
+    - Make a new GET request with the endpoint of "/get-todo-by-priority/:priority" that takes a param of 'high' (ascending priority) or 'low' (descending priority) and returns a sorted array of todos ordered by priority level. 
